@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 
 const readJson = fs.readFileSync('./database/data.json');
-const data = JSON.parse(readJson);
+let data = JSON.parse(readJson);
 
 app.set('views', './views'); // specify the views directory
 app.set('view engine', 'ejs'); // register the template engine
@@ -78,6 +78,19 @@ app.post('/edit/:id', (req, res) => {
   data[index].Date = newDate;
   data[index].Boolean = bln;
 
+  fs.writeFileSync('./database/data.json', JSON.stringify(data));
+  res.redirect('/');
+});
+
+app.get('/delete/:id', (req, res) => {
+  const newData = [];
+  for (let i = 0; i < data.length; i++) {
+    if (Number(req.params.id) !== data[i].ID) {
+      newData.push(data[i]);
+    }
+  }
+
+  data = newData;
   fs.writeFileSync('./database/data.json', JSON.stringify(data));
   res.redirect('/');
 });
