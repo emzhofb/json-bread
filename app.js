@@ -35,9 +35,12 @@ app.post('/add', (req, res) => {
   const date = req.body.Date || 'kosong';
   const bln = req.body.Boolean ? true : false;
 
-  const splittedDate = date.split('-');
-  const month = formatDate(splittedDate[1]);
-  const newDate = `${splittedDate[2]} ${month} ${splittedDate[0]}`;
+  let newDate = date;
+  if (date !== 'kosong') {
+    const splittedDate = date.split('-');
+    const month = formatDate(splittedDate[1]);
+    newDate = `${splittedDate[2]} ${month} ${splittedDate[0]}`;
+  }
 
   const newData = {
     ID: id,
