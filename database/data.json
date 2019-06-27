@@ -1,10 +1,1 @@
-[
-  {
-    "ID": 1,
-    "String": "Mark",
-    "Integer": 22,
-    "Float": 3.14,
-    "Date": "2017-12-12",
-    "Boolean": true
-  }
-]
+[{"ID":1,"String":"Mike","Integer":23,"Float":2.15,"Date":"12 June 2019","Boolean":false}]

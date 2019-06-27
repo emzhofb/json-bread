@@ -10,12 +10,12 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <title>Add Data</title>
+    <title>Edit Data</title>
   </head>
   <body>
     <div class="container" style="padding: 10px">
       <h1>Edit Data</h1>
-      <form>
+      <form action="/edit/<%= data.ID %>" method="POST">
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">ID</label>
           <div class="col-sm-8">
@@ -23,7 +23,7 @@
               type="text"
               class="form-control"
               id="formGroupExampleInput"
-              placeholder="ID"
+              value="<%= data.ID %>"
               disabled
             />
           </div>
@@ -34,8 +34,9 @@
             <input
               type="text"
               class="form-control"
-              id="formGroupExampleInput"
-              placeholder="String"
+              id="String"
+              name="String"
+              value="<%= data.String %>"
             />
           </div>
         </div>
@@ -45,8 +46,9 @@
             <input
               type="text"
               class="form-control"
-              id="formGroupExampleInput"
-              placeholder="Integer"
+              id="Integer"
+              name="Integer"
+              value="<%= data.Integer %>"
             />
           </div>
         </div>
@@ -56,8 +58,9 @@
             <input
               type="text"
               class="form-control"
-              id="formGroupExampleInput"
-              placeholder="Float"
+              id="Float"
+              name="Float"
+              value="<%= data.Float %>"
             />
           </div>
         </div>
@@ -65,24 +68,30 @@
           <label class="col-sm-2 col-form-label">Date</label>
           <div class="col-sm-8">
             <input
-              type="text"
+              type="date"
               class="form-control"
-              id="formGroupExampleInput"
-              placeholder="Date"
+              id="Date"
+              name="Date"
+              value="<%= data.Date %>"
             />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Float</label>
           <div class="col-sm-8">
-            <select id="inputState" class="form-control">
-              <option selected>Choose the boolean...</option>
-              <option>true</option>
-              <option>false</option>
+            <select
+              id="inputState"
+              class="form-control"
+              type="boolean"
+              name="Boolean"
+            >
+              <option>Choose the boolean...</option>
+              <option value="a">true</option>
+              <option value="">false</option>
             </select>
           </div>
         </div>
-        <button type="button" class="btn btn-info">Update</button>
+        <button type="submit" class="btn btn-info">Update</button>
       </form>
     </div>
   </body>
