@@ -39,19 +39,18 @@ app.post('/add', (req, res) => {
   const month = formatDate(splittedDate[1]);
   const newDate = `${splittedDate[2]} ${month} ${splittedDate[0]}`;
 
-  const newData = [
-    ...data,
-    {
-      ID: id,
-      String: str,
-      Integer: itg,
-      Float: flt,
-      Date: newDate,
-      Boolean: bln
-    }
-  ];
+  const newData = {
+    ID: id,
+    String: str,
+    Integer: itg,
+    Float: flt,
+    Date: newDate,
+    Boolean: bln
+  };
 
-  fs.writeFileSync('./database/data.json', JSON.stringify(newData));
+  data.push(newData);
+
+  fs.writeFileSync('./database/data.json', JSON.stringify(data));
   res.redirect('/');
 });
 
