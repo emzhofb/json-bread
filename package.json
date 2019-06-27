@@ -1,0 +1,20 @@
+{
+  "name": "json-bread",
+  "version": "1.0.0",
+  "description": "Browse, Read, Edit, Add, and Delete with JSON file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emzhofb/json-bread.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emzhofb/json-bread/issues"
+  },
+  "homepage": "https://github.com/emzhofb/json-bread#readme"
+}
