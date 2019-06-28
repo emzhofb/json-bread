@@ -16,7 +16,7 @@
     <div class="container" style="padding: 20px">
       <h1>BREAD (Browse, Read, Edit, Add, Delete)</h1>
       <h2>Filters</h2>
-      <form>
+      <form action="/search" method="POST">
         <div class="container">
           <div class="row">
             <div class="col-sm-2">
@@ -29,7 +29,8 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="formGroupExampleInput"
+                  id="ID"
+                  name="ID"
                   placeholder="ID"
                 />
               </div>
@@ -46,7 +47,8 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="formGroupExampleInput"
+                  id="String"
+                  name="String"
                   placeholder="String"
                 />
               </div>
@@ -63,7 +65,8 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="formGroupExampleInput"
+                  id="Integer"
+                  name="Integer"
                   placeholder="Integer"
                 />
               </div>
@@ -80,7 +83,8 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="formGroupExampleInput"
+                  id="Float"
+                  name="Float"
                   placeholder="Float"
                 />
               </div>
@@ -95,9 +99,10 @@
             <div class="col-sm-3">
               <div class="form-group">
                 <input
-                  type="text"
+                  type="date"
                   class="form-control"
-                  id="formGroupExampleInput"
+                  id="Date"
+                  name="Date"
                   placeholder="start date"
                 />
               </div>
@@ -106,9 +111,10 @@
             <div class="col-sm-3">
               <div class="form-group">
                 <input
-                  type="text"
+                  type="date"
                   class="form-control"
-                  id="formGroupExampleInput"
+                  id="Date"
+                  name="Date"
                   placeholder="end date"
                 />
               </div>
@@ -123,8 +129,8 @@
             <div class="form-group col-md-3">
               <select id="inputState" class="form-control">
                 <option selected>Choose the boolean...</option>
-                <option>true</option>
-                <option>false</option>
+                <option value="a" >true</option>
+                <option value="" >false</option>
               </select>
             </div>
           </div>
@@ -145,13 +151,13 @@
           </tr>
         </thead>
         <tbody>
-          <% data.forEach(d => { %>
+          <% newData.forEach(d => { %>
           <tr>
             <th scope="row"><%= d.ID %></th>
             <td><%= d.String %></td>
             <td><%= d.Integer %></td>
             <td><%= d.Float %></td>
-            <td><%= d.Date %></td>
+            <td><%= d.displayedDate %></td>
             <td><%= d.Boolean %></td>
             <td>
               <a href="/edit/<%= d.ID %>" style="color: white">

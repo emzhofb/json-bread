@@ -84,10 +84,10 @@
               class="form-control"
               type="boolean"
               name="Boolean"
+              id="Boolean"
             >
-              <option>Choose the boolean...</option>
-              <option value="a">true</option>
-              <option value="">false</option>
+              <option value="a" <%= data.Boolean.toString() == "true" ? "selected" : "" %>>true</option>
+              <option value="" <%= data.Boolean.toString() == "false" ? "selected" : "" %>>false</option>
             </select>
           </div>
         </div>

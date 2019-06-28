@@ -14,8 +14,25 @@ app.set('view engine', 'ejs'); // register the template engine
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/views'));
 
-app.get('/', (req, res) => res.render('index', { data }));
+app.get('/', (req, res) => {
+  let newData = [];
+  
+  let newDate;
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].Date !== 'kosong') {
+      const splittedDate = data[i].Date.split('-');
+      const month = formatDate(splittedDate[1]);
+      newDate = `${splittedDate[2]} ${month} ${splittedDate[0]}`;
+      data[i].displayedDate = newDate;
+    }
+    newData.push(data[i]);
+  }
+
+  res.render('index', { newData });
+});
+
 app.get('/add', (req, res) => res.render('add'));
+
 app.get('/edit/:id', (req, res) => {
   let dataId;
   for (let i = 0; i < data.length; i++) {
@@ -35,19 +52,12 @@ app.post('/add', (req, res) => {
   const date = req.body.Date || 'kosong';
   const bln = req.body.Boolean ? true : false;
 
-  let newDate = date;
-  if (date !== 'kosong') {
-    const splittedDate = date.split('-');
-    const month = formatDate(splittedDate[1]);
-    newDate = `${splittedDate[2]} ${month} ${splittedDate[0]}`;
-  }
-
   const newData = {
     ID: id,
     String: str,
     Integer: itg,
     Float: flt,
-    Date: newDate,
+    Date: date,
     Boolean: bln
   };
 
@@ -70,14 +80,10 @@ app.post('/edit/:id', (req, res) => {
     if (data[i].ID === Number(id)) index = i;
   }
 
-  const splittedDate = date.split('-');
-  const month = formatDate(splittedDate[1]);
-  const newDate = `${splittedDate[2]} ${month} ${splittedDate[0]}`;
-
   data[index].String = str;
   data[index].Integer = itg;
   data[index].Float = flt;
-  data[index].Date = newDate;
+  data[index].Date = date;
   data[index].Boolean = bln;
 
   fs.writeFileSync('./database/data.json', JSON.stringify(data));
